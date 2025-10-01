@@ -3617,7 +3617,12 @@
                         else {
                             scrollPoint = $('[data-scroll-id="' + h + '"]');
                             section = scrollPoint.parentElement;
-                            activateSection(section, scrollPoint);
+                            
+                            if(section) {
+                                requestAnimationFrame(() => {
+                                    activateSection(section, scrollPoint);
+                                });
+                            }
                         }
                     });
                     on("hashchange", function (event) {
